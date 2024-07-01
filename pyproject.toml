@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "triton-copilot"
+version = "0.1.1"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.scripts]
+triton-copilot = "triton_copilot.main:app"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+typer = {extras = ["all"], version = "^0.12.1"}
+anthropic = "0.23.1"
+openai = "1.16.2"
+rich = "13.7.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
