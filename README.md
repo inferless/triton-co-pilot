@@ -1,8 +1,8 @@
 
 
-# Triton-Server Co-Pilot
+# Nvidia Triton Inference Server Co-Pilot
 
-Triton-Server Co-Pilot is an innovative tool designed to streamline the process of converting any model code into Triton-Server compatible code, simplifying deployment on NVIDIA Triton Inference Server. This project automatically generates necessary configuration files (`config.pbtxt`) and custom wrapper code (`model.py`), among others, facilitating seamless integration and deployment of AI models in production environments.
+Nvidia Triton Inference Server Co-Pilot is an innovative tool designed to streamline the process of converting any model code into Triton-Server compatible code, simplifying deployment on NVIDIA Triton Inference Server. This project automatically generates necessary configuration files (`config.pbtxt`) and custom wrapper code (`model.py`), among others, facilitating seamless integration and deployment of AI models in production environments.
 
 ## Features and Benefits
 
@@ -83,4 +83,4 @@ Usage: triton-copilot run [OPTIONS] TAG
 
 ## Contributing & Support
 
-- [GitHub issues](https://github.com/inferless/triton-copilot/issues/new) \(Bug reports, feature requests, and anything roadmap related)
+- [GitHub issues](https://github.com/inferless/triton-co-pilot/issues/new) \(Bug reports, feature requests, and anything roadmap related)
