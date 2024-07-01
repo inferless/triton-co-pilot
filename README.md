@@ -12,6 +12,9 @@ Triton-Server Co-Pilot is an innovative tool designed to streamline the process 
 ## Installation
 `pip install triton-copilot`
 
+![Inferless - Triton Server Copilot (3)](https://github.com/inferless/triton-co-pilot/assets/3748840/51667778-f4c4-4ae1-be1c-05708e6ca032)
+
+
 ## Initialization
 This cli too requires api keys to either openai's gpt4 model or claude3 model
 | **Usage**                       |
