@@ -68,5 +68,3 @@ def get_openai_keys():
                 org_id = line.split("=")[1].strip()
 
     return api_key, org_id
-
-

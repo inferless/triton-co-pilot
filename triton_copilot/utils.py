@@ -1,7 +1,11 @@
 import os
+import socket
+import subprocess
+
 import anthropic
 from openai import OpenAI
 import pkg_resources
+import shutil
 
 TEMPLATE_DIR = pkg_resources.resource_filename("triton_copilot", "template/")
 
@@ -63,8 +67,29 @@ def rename_dir(directory, new_name):
 
 
 def cleanup(directory):
-    import shutil
     try:
         shutil.rmtree(directory)  # Delete the directory and its contents recursively
     except FileNotFoundError:
         pass
+
+
+def get_free_ports():
+    start = 8000
+    end = 8999
+    ports = []
+    for port in range(start, end + 1):
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            try:
+                s.bind(("localhost", port))
+                s.listen(1)
+                ports.append(port)
+            except OSError:
+                continue
+        if len(ports) == 3:
+            return ports
+    raise RuntimeError(f"No free ports found in the range {start}-{end}")
+
+
+def is_container_running(image_name):
+    output = subprocess.run(["docker", "ps"], stdout=subprocess.PIPE)
+    return image_name in output.stdout.decode()
