@@ -1,3 +1,4 @@
+import shutil
 import typer
 import ast
 import subprocess
@@ -45,8 +46,10 @@ def infer_function_refs(file_path):
     return load_ref, infer_ref, unload_ref
 
 
-def build_image(project_path, tag, triton_version):
+def build_image(project_path, tag, triton_version, requirements_file):
     try:
+        if requirements_file != "None":
+            shutil.copy(requirements_file, f"{project_path}/1/requirements.txt")
         file = open(f"{project_path}/Dockerfile", "r")
         lines = file.readlines()
 

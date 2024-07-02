@@ -1,6 +1,6 @@
 import os
 import sys
-import app
+import ##file## as app
 import json
 import triton_python_backend_utils as pb_utils
 import numpy as np
@@ -83,21 +83,23 @@ class TritonPythonModel:
                 ):
                     continue
 
-                size = len(input_numpy_tensor.as_numpy())
-                if size == 1:
+                input_numpy_tensor = input_numpy_tensor.as_numpy()
+                size = len(input_numpy_tensor)
+                shape = input_numpy_tensor.shape
+                if shape == (1,):
                     if each["datatype"] == "BYTES":
-                        inputs[each["name"]] = input_numpy_tensor.as_numpy()[0].decode()
+                        inputs[each["name"]] = np.vectorize(lambda x: x.decode('utf-8'))(input_numpy_tensor)[0]
                     else:
-                        inputs[each["name"]] = input_numpy_tensor.as_numpy()[0]
+                        inputs[each["name"]] = input_numpy_tensor[0]
                 else:
                     input_array = []
                     for i in range(0, size):
                         if each["datatype"] == "BYTES":
                             input_array.append(
-                                input_numpy_tensor.as_numpy()[i].decode()
+                                np.vectorize(lambda x: x.decode('utf-8'))(input_numpy_tensor[i])
                             )
                         else:
-                            input_array.append(input_numpy_tensor.as_numpy()[i])
+                            input_array.append(input_numpy_tensor[i])
                     inputs[each["name"]] = input_array
 
             inference_outputs = custom_model.##infer_func##(inputs)

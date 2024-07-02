@@ -51,6 +51,7 @@ This command builds the triton docker image by making necessary modifications to
 | `--unload-ref`                | TEXT     | Reference to the unload function [Class.Function]       | None        | No           |
 | `--sample-input-file`         | TEXT     | File path to sample input payload       | None        | No           |
 | `--sample-output-file`        | TEXT     | File path to sample output payload      | None        | No           |
+| `--requirements_file`         | TEXT     | Path to requirements file               | None        | No           |
 | `--max-batch-size`            | INTEGER  | Max batch size                          | None        | No           |
 | `--preferred-batch-size`      | INTEGER  | Preferred batch size                    | None        | No           |
 | `--no-prompt`                 | BOOL     | Skip prompts                            | no-no-prompt| No           |
